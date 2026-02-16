@@ -3,270 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>経営促進パートナー | 組織のOSを構築する右腕</title>
+    <title>Management Partner | 経営促進パートナー</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: '#D4AF37',
-                        dark: '#0F172A',
-                        'dark-card': '#1E293B',
-                        accent: '#3B82F6',
-                    },
-                    fontFamily: {
-                        sans: ['"Inter"', '"Noto Sans JP"', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background-color: #0F172A; color: #F8FAFC; overflow-x: hidden; }
-        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .text-gradient { background: linear-gradient(to right, #FFFFFF, #94A3B8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .gold-gradient { background: linear-gradient(to right, #D4AF37, #F5E0A3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .border-gold { border-color: rgba(212, 175, 55, 0.3); }
-        .glow { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
-        /* スムーススクロール */
-        html { scroll-behavior: smooth; }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Oswald:wght@500;700&display=swap');
+        
+        body { 
+            background-color: #0f172a; 
+            color: #f8fafc; 
+            font-family: 'Noto Sans JP', sans-serif;
+            padding-bottom: 100px;
+        }
+        .font-eng { font-family: 'Oswald', sans-serif; }
+        .glass-card { 
+            background: rgba(30, 41, 59, 0.6); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255,255,255,0.08); 
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .accent-gradient {
+            background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%);
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+        }
+        
+        /* 円グラフ用CSS */
+        .pie-chart {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: relative;
+        }
+        .pie-before {
+            /* 現場60%(赤), 事務30%(黄), 経営10%(青) */
+            background: conic-gradient(
+                #ef4444 0% 60%, 
+                #f59e0b 60% 90%, 
+                #3b82f6 90% 100%
+            );
+        }
+        .pie-after {
+            /* 経営70%(青), 現場30%(赤), 事務0% */
+            background: conic-gradient(
+                #3b82f6 0% 70%, 
+                #ef4444 70% 100%
+            );
+        }
+        .pie-center {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px; height: 60px;
+            background: #1e293b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: #cbd5e1;
+        }
+
+        /* アニメーション */
+        @keyframes widthGrow {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        .animate-bar {
+            animation: widthGrow 1.5s ease-out forwards;
+        }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body class="antialiased">
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 glass border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
-            <div class="font-black tracking-tighter text-xl">MANAGEMENT <span class="text-gold text-lg">PARTNER</span></div>
-            <a href="mailto:yamaguchi.t@mnstdiku-member.jp" class="text-xs font-bold border border-gold px-4 py-2 rounded-full text-gold hover:bg-gold hover:text-dark transition-all">無料相談</a>
+    <header class="pt-12 pb-8 px-5 text-center max-w-2xl mx-auto">
+        <div class="inline-block px-3 py-1 mb-4 text-[10px] font-bold tracking-widest text-blue-300 border border-blue-500/30 rounded-full bg-blue-900/20">
+            For 5-10 Employees / Startup Phase
         </div>
-    </nav>
+        <h1 class="text-3xl font-extrabold leading-tight mb-4">
+            社長を「現場と事務」から解放し<br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">「経営と営業」</span>へ戻す。
+        </h1>
+        <p class="text-slate-400 text-sm leading-relaxed">
+            右腕不在の建設・設備業経営者へ。<br>
+            採用コストを1/15に圧縮し、組織の土台を作ります。
+        </p>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 px-6 overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-blue-900/20 rounded-full blur-[120px] -z-10"></div>
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="inline-block py-1 px-3 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold mb-8 tracking-widest uppercase">
-                Right-hand for CEOs
-            </div>
-            <h1 class="text-4xl md:text-6xl font-black mb-8 leading-[1.15] text-gradient">
-                経営者の孤独を解消し、<br>
-                組織が自走する<span class="gold-gradient italic">未来</span>を創る。
-            </h1>
-            <p class="text-slate-400 text-lg md:text-xl leading-relaxed mb-12 font-light">
-                従業員5〜10名規模の社長を、現場と事務から解放。<br>
-                「右腕」として組織のOSを構築し、事業成長に全霊を。
-            </p>
-            
-            <!-- Quick Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
-                <div class="glass p-4 rounded-2xl">
-                    <div class="text-gold font-black text-2xl">1/15</div>
-                    <div class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">採用コスト圧縮</div>
-                </div>
-                <div class="glass p-4 rounded-2xl">
-                    <div class="text-gold font-black text-2xl">780<span class="text-sm">万</span></div>
-                    <div class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">累計削減額実績</div>
-                </div>
-                <div class="glass p-4 rounded-2xl col-span-2 md:col-span-1">
-                    <div class="text-gold font-black text-2xl">100<span class="text-sm">%</span></div>
-                    <div class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">社長の経営集中度</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Problem & Sympathy -->
-    <section class="py-20 px-6 bg-slate-900/50 border-y border-white/5">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-center text-gold font-bold mb-12">こんな「パンク寸前」ではありませんか？</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="flex gap-4 items-start">
-                    <div class="bg-red-500/20 p-2 rounded-lg text-red-500 mt-1"><i class="fa-solid fa-triangle-exclamation"></i></div>
-                    <p class="text-slate-300">「採用費ばかりかかって、全然人が定着しない」</p>
-                </div>
-                <div class="flex gap-4 items-start">
-                    <div class="bg-red-500/20 p-2 rounded-lg text-red-500 mt-1"><i class="fa-solid fa-triangle-exclamation"></i></div>
-                    <p class="text-slate-300">「自分が現場に出ないと、仕事が回らない」</p>
-                </div>
-                <div class="flex gap-4 items-start">
-                    <div class="bg-red-500/20 p-2 rounded-lg text-red-500 mt-1"><i class="fa-solid fa-triangle-exclamation"></i></div>
-                    <p class="text-slate-300">「事務作業に追われ、営業や戦略を考える時間がない」</p>
-                </div>
-                <div class="flex gap-4 items-start">
-                    <div class="bg-red-500/20 p-2 rounded-lg text-red-500 mt-1"><i class="fa-solid fa-triangle-exclamation"></i></div>
-                    <p class="text-slate-300">「社員の評価が感覚的で、不満が溜まっている」</p>
-                </div>
-            </div>
-            <div class="mt-16 text-center glass p-8 rounded-3xl border-blue-500/20">
-                <p class="text-blue-300 font-bold mb-2 italic">私のミッション</p>
-                <p class="text-xl leading-relaxed">
-                    社長の頭の中にある「構想」を言語化し、<br>
-                    <span class="text-white font-black underline decoration-blue-500 underline-offset-8">実務・仕組み・組織</span>へと落とし込み、現場から社長を救い出します。
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievement 01: Recruitment -->
-    <section id="recruitment" class="py-24 px-6">
-        <div class="max-w-5xl mx-auto">
-            <div class="flex items-center gap-4 mb-12">
-                <div class="w-12 h-12 rounded-2xl bg-gold flex items-center justify-center text-dark text-2xl font-black">01</div>
-                <h2 class="text-3xl font-black">採用費削減の「証明」</h2>
-            </div>
-
-            <div class="grid md:grid-cols-5 gap-8">
-                <!-- Case Card -->
-                <div class="md:col-span-3 glass p-8 rounded-[2.5rem] relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-3xl"></div>
-                    <h3 class="text-gold font-bold text-sm mb-4 tracking-widest">CASE STUDY: 電気工事士採用</h3>
-                    <p class="text-2xl font-bold mb-6">難解な仕事を「定義」し直し、<br>1名単価9.1万円で6名獲得。</p>
-                    
-                    <div class="space-y-6">
-                        <div class="bg-dark/50 p-6 rounded-2xl border border-white/5">
-                            <p class="text-xs text-slate-500 mb-2 font-bold uppercase">Strategy: 言語化による再定義</p>
-                            <p class="text-sm leading-loose">
-                                多くの企業が「未経験歓迎」と書く中で、私は電気工事を<span class="text-gold font-bold">「実寸大のプラモデル作成」</span>と再定義。
-                                クリエイティブ欲求を刺激する言葉で、紹介会社を介さずターゲットの心を直接掴みました。
-                            </p>
-                        </div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-                                <div class="text-[10px] text-green-500 font-bold mb-1">目標達成</div>
-                                <div class="text-xl font-bold">6名獲得 (120%)</div>
-                            </div>
-                            <div class="p-4 rounded-xl bg-blue-500/10 border border-blue-500/20">
-                                <div class="text-[10px] text-blue-500 font-bold mb-1">採用単価</div>
-                                <div class="text-xl font-bold">9.1万円</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Comparison Table -->
-                <div class="md:col-span-2 glass p-8 rounded-[2.5rem] flex flex-col justify-center">
-                    <h4 class="text-center font-bold mb-6 text-sm text-slate-400 italic">コスト比較（6名採用時）</h4>
-                    <div class="space-y-4">
-                        <div class="flex justify-between items-end border-b border-white/10 pb-2">
-                            <span class="text-xs">紹介会社経由</span>
-                            <span class="text-lg font-bold">¥8,400,000</span>
-                        </div>
-                        <div class="flex justify-between items-end border-b border-white/10 pb-2">
-                            <span class="text-xs">直接運用実績</span>
-                            <span class="text-lg font-bold text-gold">¥546,000</span>
-                        </div>
-                        <div class="bg-blue-600 p-4 rounded-xl text-center glow">
-                            <div class="text-[10px] font-black uppercase">Cost Cut</div>
-                            <div class="text-2xl font-black">¥7,854,000</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievement 02: Organization -->
-    <section id="organization" class="py-24 px-6 bg-slate-900/30">
-        <div class="max-w-5xl mx-auto">
-            <div class="flex items-center gap-4 mb-12">
-                <div class="w-12 h-12 rounded-2xl bg-blue-600 flex items-center justify-center text-white text-2xl font-black">02</div>
-                <h2 class="text-3xl font-black">組織OSの「実装」</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Evaluation System -->
-                <div class="glass p-8 rounded-[2.5rem]">
-                    <h3 class="text-blue-400 font-bold text-sm mb-6 tracking-widest">4軸評価制度の構築</h3>
-                    <p class="text-lg font-bold mb-6">感覚的な評価を排し、<br>社員が「納得する」基準を作る。</p>
-                    
-                    <div class="grid grid-cols-2 gap-3 mb-8">
-                        <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-center">
-                            <div class="text-xs text-slate-400 mb-1">技術</div>
-                            <div class="text-sm font-bold">スキル</div>
-                        </div>
-                        <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-center">
-                            <div class="text-xs text-slate-400 mb-1">態度</div>
-                            <div class="text-sm font-bold">姿勢</div>
-                        </div>
-                        <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-center">
-                            <div class="text-xs text-slate-400 mb-1">実績</div>
-                            <div class="text-sm font-bold">成果</div>
-                        </div>
-                        <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-center">
-                            <div class="text-xs text-slate-400 mb-1">規律</div>
-                            <div class="text-sm font-bold">マナー</div>
-                        </div>
-                    </div>
-                    <p class="text-sm text-slate-400 leading-relaxed">
-                        これらを数値化し、賞与や始末書規定と完全連動。1on1の定着により「社長にしか言えない悩み」の受け皿となり、離職リスクを最小化しました。
-                    </p>
-                </div>
-
-                <!-- Communication -->
-                <div class="glass p-8 rounded-[2.5rem] flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-blue-400 font-bold text-sm mb-6 tracking-widest">経営実務・効率化</h3>
-                        <p class="text-lg font-bold mb-6">社長の工数を100%<br>「経営」に振り向けさせる。</p>
-                        <div class="space-y-4">
-                            <div class="flex gap-4">
-                                <i class="fa-solid fa-check text-gold mt-1"></i>
-                                <span class="text-sm text-slate-300">LINE連絡ルールの策定（電話による中断の削減）</span>
-                            </div>
-                            <div class="flex gap-4">
-                                <i class="fa-solid fa-check text-gold mt-1"></i>
-                                <span class="text-sm text-slate-300">事務作業のマニュアル化と既存スタッフへの移管</span>
-                            </div>
-                            <div class="flex gap-4">
-                                <i class="fa-solid fa-check text-gold mt-1"></i>
-                                <span class="text-sm text-slate-300">振込・請求・士業対応の完全代行窓口</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-8 pt-6 border-t border-white/5 flex items-center gap-4">
-                        <div class="text-4xl font-black text-white italic">50<span class="text-sm">H/month</span></div>
-                        <div class="text-[10px] text-slate-500 font-bold leading-tight">社長の創出時間<br>推定（月間）</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="py-32 px-6 text-center">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl md:text-5xl font-black mb-8 leading-tight">
-                社長の「右腕」は、<br>
-                <span class="gold-gradient italic">外部</span>から補強できる。
+    <section class="px-4 max-w-2xl mx-auto mb-12">
+        <div class="glass-card rounded-2xl p-6 border-t-4 border-yellow-500">
+            <h2 class="text-sm font-bold text-slate-400 mb-4 flex items-center">
+                <i class="fa-solid fa-chart-simple mr-2"></i> 採用コスト比較（6名採用時）
             </h2>
-            <p class="text-slate-400 mb-12 leading-loose">
-                採用、組織、事務。現場が回らない理由は、能力不足ではなく「構造」の欠如です。<br>
-                まずは30分の無料相談で、御社の「ボトルネック」を可視化しませんか？
-            </p>
-            <a href="mailto:yamaguchi.t@mnstdiku-member.jp" class="inline-block bg-gold text-dark px-12 py-5 rounded-full font-black text-lg shadow-xl shadow-gold/20 hover:scale-105 transition-transform">
-                無料で相談してみる
-            </a>
-            <p class="mt-8 text-xs text-slate-500">
-                ※yamaguchi.t@mnstdiku-member.jp へメールが送信されます
+            
+            <div class="mb-4">
+                <div class="flex justify-between text-xs mb-1">
+                    <span class="text-slate-400">市場相場（紹介会社利用）</span>
+                    <span class="text-red-400 font-bold">840万円</span>
+                </div>
+                <div class="w-full bg-slate-700 rounded-full h-6 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 h-full bg-red-500/80 w-full flex items-center justify-end px-2">
+                        <span class="text-[10px] text-white font-bold">100% Cost</span>
+                    </div>
+                </div>
+                <p class="text-[10px] text-slate-500 mt-1">※年収400万×35%手数料×6名</p>
+            </div>
+
+            <div class="mb-2">
+                <div class="flex justify-between text-xs mb-1">
+                    <span class="text-yellow-400 font-bold">当社の実績</span>
+                    <span class="text-yellow-400 font-bold text-lg">55万円</span>
+                </div>
+                <div class="w-full bg-slate-700 rounded-full h-8 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 h-full bg-gradient-to-r from-yellow-500 to-orange-500 w-[6.5%] animate-bar rounded-full shadow-[0_0_15px_rgba(251,191,36,0.5)]"></div>
+                    <div class="absolute top-0 left-[8%] h-full flex items-center">
+                        <span class="text-xs font-bold text-yellow-400"><i class="fa-solid fa-arrow-left"></i> 約94%削減 (780万円DOWN)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-4 max-w-2xl mx-auto mb-12">
+        <div class="flex items-center gap-2 mb-4">
+            <span class="w-1 h-6 bg-blue-500 rounded-full"></span>
+            <h2 class="text-lg font-bold">Case Study: 大阪の電気工事会社</h2>
+        </div>
+        
+        <div class="glass-card rounded-xl p-6">
+            <div class="flex flex-wrap gap-2 text-[10px] text-slate-300 mb-4">
+                <span class="bg-slate-700 px-2 py-1 rounded">従業員5名</span>
+                <span class="bg-slate-700 px-2 py-1 rounded">売上3億円</span>
+                <span class="bg-slate-700 px-2 py-1 rounded">期間: 2025/2-2026/2</span>
+            </div>
+
+            <h3 class="text-lg font-bold mb-4 leading-snug">
+                「きつい仕事」を<br>
+                <span class="text-blue-400">「実寸大のプラモデル作り」</span>へ翻訳。
+            </h3>
+
+            <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
+                <p>
+                    <i class="fa-solid fa-triangle-exclamation text-yellow-500 mr-1"></i>
+                    <strong>課題:</strong> 電気工事＝「難しい・3K」というイメージで応募ゼロ。
+                </p>
+                <p>
+                    <i class="fa-solid fa-lightbulb text-yellow-400 mr-1"></i>
+                    <strong>解決策:</strong> 仕事の本質を「プラモデル作成」のような緻密な面白さと再定義。未経験者のワクワク感を引き出す原稿へ刷新。
+                </p>
+                <div class="bg-slate-800/50 p-3 rounded-lg border border-slate-700">
+                    <p class="font-bold text-white mb-1"><i class="fa-solid fa-check text-green-400 mr-1"></i>成果: 6名採用達成</p>
+                    <ul class="list-disc list-inside text-xs text-slate-400 ml-1">
+                        <li>Zキャリア(有料)で1名 (55万円)</li>
+                        <li>Indeed/Engage(無料)で5名 (0円)</li>
+                        <li><strong>1名あたり採用単価: 9.1万円</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-4 max-w-2xl mx-auto mb-12">
+        <h2 class="text-lg font-bold mb-6 text-center">導入後の社長の時間変化</h2>
+        <div class="glass-card p-6 rounded-xl">
+            <div class="flex justify-around items-center text-center">
+                <div class="flex flex-col items-center">
+                    <div class="mb-2 text-xs text-slate-400 font-bold">Before</div>
+                    <div class="pie-chart pie-before">
+                        <div class="pie-center">パンク<br>状態</div>
+                    </div>
+                    <div class="mt-3 text-[10px] text-left space-y-1">
+                        <div class="text-red-400">■ 現場 60%</div>
+                        <div class="text-yellow-500">■ 事務/採用 30%</div>
+                        <div class="text-blue-500">■ 経営 10%</div>
+                    </div>
+                </div>
+
+                <div class="text-2xl text-slate-600">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="mb-2 text-xs text-yellow-400 font-bold">After</div>
+                    <div class="pie-chart pie-after shadow-[0_0_15px_rgba(59,130,246,0.4)]">
+                        <div class="pie-center text-white">理想の<br>配分</div>
+                    </div>
+                    <div class="mt-3 text-[10px] text-left space-y-1">
+                        <div class="text-blue-400 font-bold">■ 経営 70%</div>
+                        <div class="text-red-400">■ 現場 30%</div>
+                        <div class="text-slate-500">□ 事務/採用 0%</div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-xs text-slate-400 mt-6 border-t border-slate-700 pt-3">
+                事務・採用業務を完全に移管し、<br>
+                社長は「重要案件」と「未来の経営」だけに集中。
             </p>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 border-t border-white/5 text-center text-[10px] text-slate-600 tracking-[0.3em] uppercase">
-        © 2026 Management Promotion Partner.
-    </footer>
+    <section class="px-4 max-w-2xl mx-auto mb-16">
+        <div class="flex items-center gap-2 mb-4">
+            <span class="w-1 h-6 bg-green-500 rounded-full"></span>
+            <h2 class="text-lg font-bold">強い組織の「OS」構築</h2>
+        </div>
+        <p class="text-sm text-slate-400 mb-4">社長の「感覚」を4つの軸で数値化し、納得感のある評価制度を導入。</p>
 
-    <!-- Fixed Bottom Bar for Mobile CTA -->
-    <div class="fixed bottom-0 w-full z-50 p-4 md:hidden">
-        <a href="mailto:yamaguchi.t@mnstdiku-member.jp" class="flex items-center justify-center gap-3 w-full bg-blue-600 text-white font-black py-4 rounded-2xl shadow-2xl glow">
-            <i class="fa-solid fa-envelope"></i>
-            無料相談メールを送る
+        <div class="glass-card p-6 rounded-xl">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-slate-800/80 p-3 rounded-lg border-l-2 border-blue-400">
+                    <h4 class="text-xs text-blue-400 font-bold mb-1">SKILL</h4>
+                    <p class="text-sm font-bold">スキル・技術</p>
+                    <div class="w-full bg-slate-700 h-1 mt-2 rounded"><div class="bg-blue-400 h-1 w-3/4 rounded"></div></div>
+                </div>
+                <div class="bg-slate-800/80 p-3 rounded-lg border-l-2 border-green-400">
+                    <h4 class="text-xs text-green-400 font-bold mb-1">ATTITUDE</h4>
+                    <p class="text-sm font-bold">行動・姿勢</p>
+                    <div class="w-full bg-slate-700 h-1 mt-2 rounded"><div class="bg-green-400 h-1 w-full rounded"></div></div>
+                </div>
+                <div class="bg-slate-800/80 p-3 rounded-lg border-l-2 border-yellow-400">
+                    <h4 class="text-xs text-yellow-400 font-bold mb-1">RESULT</h4>
+                    <p class="text-sm font-bold">成果・貢献</p>
+                    <div class="w-full bg-slate-700 h-1 mt-2 rounded"><div class="bg-yellow-400 h-1 w-4/5 rounded"></div></div>
+                </div>
+                <div class="bg-slate-800/80 p-3 rounded-lg border-l-2 border-pink-400">
+                    <h4 class="text-xs text-pink-400 font-bold mb-1">MANNER</h4>
+                    <p class="text-sm font-bold">マナー・規律</p>
+                    <div class="w-full bg-slate-700 h-1 mt-2 rounded"><div class="bg-pink-400 h-1 w-5/6 rounded"></div></div>
+                </div>
+            </div>
+            <p class="text-[10px] text-slate-500 mt-4 text-center">
+                「工具を大切にする」「場を清める」など、現場特有の項目も評価に反映。
+            </p>
+        </div>
+    </section>
+
+    <footer class="fixed bottom-4 left-4 right-4 max-w-2xl mx-auto z-50">
+        <a href="mailto:your-email@example.com?subject=経営支援の無料相談について" class="block w-full gold-gradient text-slate-900 font-bold text-center py-4 rounded-xl shadow-[0_10px_20px_rgba(251,191,36,0.3)] hover:translate-y-0.5 transition active:scale-95">
+            <i class="fa-regular fa-envelope mr-2"></i> まずはメールで相談する
+            <span class="block text-[10px] font-normal opacity-80 mt-1">※3営業日以内にご返信いたします</span>
         </a>
-    </div>
+    </footer>
 
 </body>
 </html>
