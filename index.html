@@ -37,14 +37,6 @@
         .delay-100 { animation-delay: 0.1s; }
         .delay-200 { animation-delay: 0.2s; }
         .delay-300 { animation-delay: 0.3s; }
-        
-        /* 下線の微調整用クラス */
-        .custom-underline {
-            background-image: linear-gradient(transparent 70%, #D4AF37 70%);
-            background-repeat: no-repeat;
-            background-size: 100% 35%;
-            display: inline;
-        }
     </style>
 </head>
 <body class="antialiased selection:bg-primary selection:text-white">
@@ -66,10 +58,10 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
             <!-- Left: Main Copy -->
             <div class="md:col-span-8 fade-in-up">
-                <p class="text-secondary font-bold tracking-[0.2em] mb-6 text-sm">業務実績・貢献価値 棚卸し報告書</p>
+                <!-- 削除: 業務実績・貢献価値 棚卸し報告書 -->
                 <h1 class="text-5xl md:text-7xl leading-tight font-medium text-primary mb-12">
-                    組織の<span class="custom-underline">解像度</span>を高め、<br>
-                    利益と規律を実装する。
+                    経営者の孤独を解消し、<br>
+                    組織が自走する未来を共に創る。
                 </h1>
                 <p class="text-lg text-muted leading-loose max-w-2xl mb-16 font-light">
                     採用コスト1/15を実現し、感覚的な人事評価を「数値」へ。<br>
@@ -94,12 +86,9 @@
                 </div>
             </div>
 
-            <!-- Right: Vertical Text / Aesthetics -->
+            <!-- Right: Removed Vertical Text -->
             <div class="hidden md:flex md:col-span-4 justify-end items-start pt-10 fade-in-up delay-200">
-                <div class="vertical-text text-muted text-sm h-64 border-r border-primary/10 pr-6 leading-loose">
-                    経営促進パートナー・実績棚卸書<br>
-                    参画期間：現在進行中
-                </div>
+                <!-- 削除: 経営促進パートナー・実績棚卸書 etc -->
             </div>
         </div>
     </header>
@@ -267,8 +256,8 @@
     <footer id="contact" class="bg-primary text-white py-24">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h2 class="text-3xl md:text-4xl font-serif mb-8 leading-snug">
-                経営者の孤独を解消し、<br>
-                組織が自走する未来を共に創る。
+                組織の解像度を高め、<br>
+                利益と規律を実装する。
             </h2>
             <p class="text-white/60 mb-12 font-light">
                 戦略立案から泥臭い現場の実務まで。<br>
