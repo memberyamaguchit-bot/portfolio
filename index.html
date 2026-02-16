@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Management Promotion Partner | 実績ポートフォリオ</title>
+    <title>経営促進パートナー | 実績ポートフォリオ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -37,6 +37,14 @@
         .delay-100 { animation-delay: 0.1s; }
         .delay-200 { animation-delay: 0.2s; }
         .delay-300 { animation-delay: 0.3s; }
+        
+        /* 下線の微調整用クラス */
+        .custom-underline {
+            background-image: linear-gradient(transparent 70%, #D4AF37 70%);
+            background-repeat: no-repeat;
+            background-size: 100% 35%;
+            display: inline;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-primary selection:text-white">
@@ -44,11 +52,11 @@
     <!-- Navigation (Minimal) -->
     <nav class="fixed w-full z-50 bg-bg/90 backdrop-blur-sm border-b border-primary/5">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="text-primary font-serif font-bold text-lg tracking-widest">MANAGEMENT PARTNER</div>
+            <div class="text-primary font-serif font-bold text-lg tracking-widest">経営促進パートナー</div>
             <div class="hidden md:flex space-x-12 text-sm font-medium tracking-wider text-muted">
-                <a href="#achievement" class="hover:text-primary transition-colors">ACHIEVEMENT</a>
-                <a href="#services" class="hover:text-primary transition-colors">SERVICES</a>
-                <a href="#contact" class="px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300">CONTACT</a>
+                <a href="#achievement" class="hover:text-primary transition-colors">実績</a>
+                <a href="#services" class="hover:text-primary transition-colors">提供価値</a>
+                <a href="mailto:yamaguchi.t@mnstdiku-member.jp" class="px-6 py-2 border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300">お問い合わせ</a>
             </div>
         </div>
     </nav>
@@ -58,9 +66,9 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
             <!-- Left: Main Copy -->
             <div class="md:col-span-8 fade-in-up">
-                <p class="text-secondary font-bold tracking-[0.2em] mb-6 text-sm">BUSINESS PERFORMANCE REPORT</p>
+                <p class="text-secondary font-bold tracking-[0.2em] mb-6 text-sm">業務実績・貢献価値 棚卸し報告書</p>
                 <h1 class="text-5xl md:text-7xl leading-tight font-medium text-primary mb-12">
-                    組織の<span class="border-b-2 border-secondary pb-1">解像度</span>を高め、<br>
+                    組織の<span class="custom-underline">解像度</span>を高め、<br>
                     利益と規律を実装する。
                 </h1>
                 <p class="text-lg text-muted leading-loose max-w-2xl mb-16 font-light">
@@ -72,15 +80,15 @@
                 <!-- Hero Stats -->
                 <div class="grid grid-cols-3 gap-8 border-t border-primary/10 pt-8">
                     <div>
-                        <div class="text-xs text-muted mb-2 tracking-wider">COST REDUCTION</div>
+                        <div class="text-xs text-muted mb-2 tracking-wider">採用費削減</div>
                         <div class="text-3xl md:text-4xl font-serif text-primary">780<span class="text-lg">万円超</span></div>
                     </div>
                     <div>
-                        <div class="text-xs text-muted mb-2 tracking-wider">EFFICIENCY</div>
+                        <div class="text-xs text-muted mb-2 tracking-wider">コスト効率</div>
                         <div class="text-3xl md:text-4xl font-serif text-primary">1/15<span class="text-lg">コスト</span></div>
                     </div>
                     <div>
-                        <div class="text-xs text-muted mb-2 tracking-wider">HIRING TARGET</div>
+                        <div class="text-xs text-muted mb-2 tracking-wider">採用目標達成率</div>
                         <div class="text-3xl md:text-4xl font-serif text-primary">120<span class="text-lg">%</span></div>
                     </div>
                 </div>
@@ -105,8 +113,8 @@
                 <span class="text-5xl text-primary/10 font-serif absolute -mt-10 ml-0">01</span>
                 <h2 class="text-2xl font-serif text-primary mb-4 relative z-10">採用領域</h2>
                 <p class="text-sm text-muted leading-relaxed">
-                    Recruitment Strategy<br>
-                    & Cost Optimization
+                    戦略的採用と<br>
+                    コスト適正化
                 </p>
             </div>
             <div class="md:col-span-9 py-16 md:pl-16">
@@ -116,7 +124,7 @@
                     <div class="bg-surface p-8 shadow-sm">
                         <div class="border-l-2 border-secondary pl-4 mb-4">
                             <h4 class="font-bold text-lg mb-1">電気工事士採用</h4>
-                            <p class="text-xs text-muted">TARGET: 5名 / RESULT: 6名</p>
+                            <p class="text-xs text-muted">目標: 5名 / 実績: 6名</p>
                         </div>
                         <div class="text-4xl font-serif text-primary mb-2">9.1<span class="text-sm">万円 / 名</span></div>
                         <p class="text-sm text-muted">
@@ -127,7 +135,7 @@
                     <div class="bg-surface p-8 shadow-sm">
                         <div class="border-l-2 border-secondary pl-4 mb-4">
                             <h4 class="font-bold text-lg mb-1">事務職採用</h4>
-                            <p class="text-xs text-muted">COST: 0円 / RESULT: 1名</p>
+                            <p class="text-xs text-muted">採用費: 0円 / 実績: 1名</p>
                         </div>
                         <div class="text-4xl font-serif text-primary mb-2">0<span class="text-sm">円</span></div>
                         <p class="text-sm text-muted">
@@ -158,8 +166,8 @@
                 <span class="text-5xl text-primary/10 font-serif absolute -mt-10 ml-0">02</span>
                 <h2 class="text-2xl font-serif text-primary mb-4 relative z-10">組織基盤</h2>
                 <p class="text-sm text-muted leading-relaxed">
-                    Evaluation System<br>
-                    & Governance
+                    評価制度と<br>
+                    組織ガバナンス
                 </p>
             </div>
             <div class="md:col-span-9 py-16 md:pl-16">
@@ -205,13 +213,13 @@
         </section>
 
         <!-- Section 03 & 04: Operations & Branding -->
-        <section class="grid grid-cols-1 md:grid-cols-12 border-t border-primary/20 border-b">
+        <section id="services" class="grid grid-cols-1 md:grid-cols-12 border-t border-primary/20 border-b">
             <div class="md:col-span-3 py-16 pr-8 grid-line">
                 <span class="text-5xl text-primary/10 font-serif absolute -mt-10 ml-0">03</span>
                 <h2 class="text-2xl font-serif text-primary mb-4 relative z-10">経営実務・広報</h2>
                 <p class="text-sm text-muted leading-relaxed">
-                    Operations<br>
-                    & Branding
+                    業務運用と<br>
+                    ブランディング
                 </p>
             </div>
             <div class="md:col-span-9 py-16 md:pl-16">
@@ -266,8 +274,8 @@
                 戦略立案から泥臭い現場の実務まで。<br>
                 御社の成長フェーズに合わせた最適なパートナーシップを提案します。
             </p>
-            <a href="#" class="inline-block border border-white/30 bg-white/5 backdrop-blur px-12 py-4 text-sm tracking-widest hover:bg-white hover:text-primary transition-all duration-300">
-                CONTACT ME
+            <a href="mailto:yamaguchi.t@mnstdiku-member.jp" class="inline-block border border-white/30 bg-white/5 backdrop-blur px-12 py-4 text-sm tracking-widest hover:bg-white hover:text-primary transition-all duration-300">
+                お問い合わせ
             </a>
             <p class="mt-24 text-xs text-white/30 tracking-widest">
                 © MANAGEMENT PROMOTION PARTNER. ALL RIGHTS RESERVED.
