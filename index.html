@@ -3,317 +3,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>経営促進パートナー | 組織のOSを構築する右腕</title>
+    <title>経営促進パートナー | 実績ポートフォリオ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        gold: '#D4AF37',
-                        dark: '#0F172A',
-                        'dark-card': '#1E293B',
-                        accent: '#3B82F6',
-                        success: '#10B981',
-                        danger: '#EF4444',
-                        warning: '#F59E0B'
+                        primary: '#265C4B', // 明るめのフォレストグリーン
+                        primaryLight: '#E8F5E9', // 非常に薄いグリーン（背景アクセント）
+                        secondary: '#D4AF37', // ゴールド
+                        textMain: '#333333',
+                        textSub: '#666666',
+                        accentRed: '#D32F2F', // アクセントの赤
                     },
                     fontFamily: {
-                        sans: ['"Inter"', '"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Shippori Mincho"', 'serif'],
+                        sans: ['"Zen Kaku Gothic New"', 'sans-serif'],
+                        num: ['"Inter"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'float': '0 10px 30px rgba(38, 92, 75, 0.1)',
                     }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #0F172A; color: #F8FAFC; overflow-x: hidden; }
-        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .text-gradient { background: linear-gradient(to right, #FFFFFF, #94A3B8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .gold-gradient { background: linear-gradient(to right, #D4AF37, #F5E0A3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .glow { box-shadow: 0 0 20px rgba(59, 130, 246, 0.2); }
-        html { scroll-behavior: smooth; }
+        body { font-family: 'Zen Kaku Gothic New', sans-serif; background-color: #FFFFFF; color: #333333; }
+        h1, h2, h3, .font-serif { font-family: 'Shippori Mincho', serif; }
+        .font-num { font-family: 'Inter', sans-serif; }
         
-        /* 円グラフ用スタイル */
-        .pie-chart {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
+        /* ドーナツグラフ用スタイル */
+        .donut-chart {
             position: relative;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: conic-gradient(var(--color1) 0% var(--deg1), var(--color2) var(--deg1) var(--deg2), var(--color3) var(--deg2) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
         }
+        .donut-hole {
+            width: 110px;
+            height: 110px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+
+        /* グラフアニメーション */
+        @keyframes expandBar { from { width: 0; } to { width: 7%; } }
+        .animate-bar { animation: expandBar 1.2s ease-out forwards; }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body class="antialiased">
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 glass border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
-            <div class="font-black tracking-tighter text-xl">MANAGEMENT <span class="text-gold text-lg">PARTNER</span></div>
-            <a href="mailto:yamaguchi.t@mnstdiku-member.jp" class="text-xs font-bold border border-gold px-4 py-2 rounded-full text-gold hover:bg-gold hover:text-dark transition-all">無料相談</a>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="text-primary font-serif font-bold text-lg tracking-wide flex items-center gap-2">
+                <i class="fa-solid fa-seedling text-xl"></i>
+                経営促進パートナー
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
+                <a href="#achievement" class="text-textSub hover:text-primary transition-colors">実績詳細</a>
+                <a href="#organization" class="text-textSub hover:text-primary transition-colors">組織改革</a>
+                <a href="mailto:yamaguchi.t@mnstdiku-member.jp" class="px-6 py-2.5 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all shadow-lg shadow-primary/20 flex items-center gap-2">
+                    <i class="fa-regular fa-envelope"></i> 無料相談
+                </a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 px-6 overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-blue-900/20 rounded-full blur-[120px] -z-10"></div>
-        <div class="max-w-4xl mx-auto text-center">
-            <div class="inline-block py-1 px-3 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold mb-8 tracking-widest uppercase">
-                2025-2026 Real Success Story
-            </div>
-            <h1 class="text-4xl md:text-6xl font-black mb-8 leading-[1.15] text-gradient">
-                経営者の孤独を解消し、<br>
-                組織が自走する<span class="gold-gradient italic">未来</span>を創る。
+    <header class="pt-40 pb-24 px-6 max-w-7xl mx-auto">
+        <div class="max-w-4xl">
+            <span class="inline-block py-1 px-3 bg-primaryLight text-primary text-xs font-bold rounded-md mb-6 tracking-widest">
+                BUSINESS REPORT 2025-2026
+            </span>
+            <h1 class="text-4xl md:text-6xl font-medium text-textMain mb-8 leading-tight">
+                組織の解像度を高め、<br>
+                <span class="text-primary border-b-4 border-secondary/30">利益と規律</span>を実装する。
             </h1>
-            <p class="text-slate-400 text-lg md:text-xl leading-relaxed mb-12 font-light">
-                大阪の電気工事会社（売上3億円規模）にて、<br>
-                <span class="text-white font-bold">採用コスト94%削減</span>と<span class="text-white font-bold">社長の経営集中</span>を実現した実績を公開。
+            <p class="text-lg text-textSub leading-loose mb-12 max-w-2xl">
+                大阪の電気工事会社（売上3億円規模）にて実証済み。<br>
+                採用コストを1/15に圧縮し、社長の時間を「現場・事務」から「経営」へ。<br>
+                数字と論理で、強い組織のOSを実装します。
             </p>
             
-            <!-- Quick Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
-                <div class="glass p-4 rounded-2xl">
-                    <div class="text-gold font-black text-2xl">¥780<span class="text-sm">万超</span></div>
-                    <div class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">採用コスト削減</div>
-                </div>
-                <div class="glass p-4 rounded-2xl">
-                    <div class="text-gold font-black text-2xl">120<span class="text-sm">%</span></div>
-                    <div class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">採用目標達成率</div>
-                </div>
-                <div class="glass p-4 rounded-2xl col-span-2 md:col-span-1 border-blue-500/30">
-                    <div class="text-accent font-black text-2xl">70<span class="text-sm">%</span></div>
-                    <div class="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">経営へのリソース投下</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Visual Achievement 01: Cost Chart -->
-    <section class="py-20 px-6 bg-slate-900/50">
-        <div class="max-w-4xl mx-auto">
-            <div class="flex items-center gap-4 mb-10">
-                <div class="w-10 h-10 rounded-xl bg-gold flex items-center justify-center text-dark text-xl font-black">01</div>
-                <h2 class="text-2xl font-black italic">桁違いの「採用コスト削減」</h2>
-            </div>
-
-            <div class="glass p-8 rounded-[2rem] border-gold">
-                <h3 class="text-slate-400 text-sm font-bold mb-8">コスト比較実績（6名採用時）</h3>
-                
-                <div class="space-y-10">
-                    <!-- Market Rate -->
-                    <div>
-                        <div class="flex justify-between mb-2 items-end">
-                            <span class="text-sm font-bold">市場相場（紹介会社経由）</span>
-                            <span class="text-danger font-black">¥8,400,000</span>
-                        </div>
-                        <div class="w-full bg-slate-800 h-6 rounded-full overflow-hidden">
-                            <div class="bg-danger h-full w-full"></div>
-                        </div>
-                    </div>
-
-                    <!-- Our Result -->
-                    <div>
-                        <div class="flex justify-between mb-2 items-end">
-                            <span class="text-sm font-bold text-accent">当社実績（直接運用＋Zキャリア）</span>
-                            <span class="text-accent font-black">¥550,000</span>
-                        </div>
-                        <div class="w-full bg-slate-800 h-6 rounded-full overflow-hidden">
-                            <div class="bg-accent h-full w-[7%]" style="box-shadow: 0 0 15px #3B82F6;"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-10 p-6 bg-accent/10 border border-accent/20 rounded-2xl text-center">
-                    <p class="text-accent font-bold text-xl">削減額：¥7,850,000 <span class="text-sm font-normal">（約94%カット）</span></p>
-                    <p class="text-xs text-slate-400 mt-2">※大阪 電気工事会社実績（2025/2-2026/2）</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Case Detail: Recruitment Strategy -->
-    <section class="py-20 px-6">
-        <div class="max-w-4xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <span class="text-gold font-bold tracking-widest uppercase text-xs">Strategy</span>
-                    <h3 class="text-3xl font-black mt-4 mb-6 leading-tight">「きつい」を<br><span class="text-gold italic">「実寸大のプラモデル」</span>へ。</h3>
-                    <p class="text-slate-400 leading-loose mb-8">
-                        電気工事の魅力を「創作の喜び」と翻訳。未経験者が持つクリエイティブ欲求を刺激する原稿をIndeed/Engageで運用し、5名の採用コストを0円に抑えました。
-                    </p>
-                    <div class="flex gap-4">
-                        <div class="glass px-4 py-2 rounded-lg text-xs font-bold">Zキャリア：1名(55万)</div>
-                        <div class="glass px-4 py-2 rounded-lg text-xs font-bold">Indeed/engage：5名(0円)</div>
-                    </div>
-                </div>
-                <div class="glass p-8 rounded-[2.5rem] bg-gradient-to-br from-slate-800 to-dark border-blue-500/20">
-                    <div class="text-center mb-6">
-                        <p class="text-xs text-slate-500 font-bold mb-2 uppercase">Recruitment Result</p>
-                        <div class="text-5xl font-black text-white">6<span class="text-xl">名採用</span></div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="flex justify-between text-sm py-2 border-b border-white/5">
-                            <span class="text-slate-400">期間</span>
-                            <span>1年間</span>
-                        </div>
-                        <div class="flex justify-between text-sm py-2 border-b border-white/5">
-                            <span class="text-slate-400">採用費（6名分）</span>
-                            <span>55万円</span>
-                        </div>
-                        <div class="flex justify-between text-sm py-2">
-                            <span class="text-slate-400">達成率</span>
-                            <span class="text-success font-bold">120%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Visual Achievement 02: Resource Pie Chart -->
-    <section class="py-20 px-6 bg-slate-900/50">
-        <div class="max-w-4xl mx-auto">
-            <div class="flex items-center gap-4 mb-10">
-                <div class="w-10 h-10 rounded-xl bg-accent flex items-center justify-center text-white text-xl font-black">02</div>
-                <h2 class="text-2xl font-black italic">社長のリソース変革</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Before -->
-                <div class="glass p-8 rounded-[2rem] border-white/5">
-                    <h4 class="text-center font-bold text-danger mb-8 tracking-widest">BEFORE: パンク状態</h4>
-                    <div class="flex justify-center mb-8">
-                        <div class="pie-chart" style="background: conic-gradient(#EF4444 0% 60%, #F59E0B 60% 90%, #3B82F6 90% 100%);">
-                            <div class="absolute inset-0 flex items-center justify-center text-[10px] font-black">10%</div>
-                        </div>
-                    </div>
-                    <div class="space-y-3">
-                        <div class="flex items-center gap-3 text-xs">
-                            <div class="w-3 h-3 bg-danger rounded-full"></div>
-                            <span class="flex-1">現場実務（60%）</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-xs">
-                            <div class="w-3 h-3 bg-warning rounded-full"></div>
-                            <span class="flex-1">事務・採用（30%）</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-xs">
-                            <div class="w-3 h-3 bg-accent rounded-full"></div>
-                            <span class="flex-1">経営・戦略（10%）</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- After -->
-                <div class="glass p-8 rounded-[2rem] border-accent/30 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-2 bg-accent text-[8px] font-black uppercase tracking-tighter transform rotate-12 translate-x-4 -translate-y-2">IDEAL</div>
-                    <h4 class="text-center font-bold text-accent mb-8 tracking-widest">AFTER: 本来の経営姿</h4>
-                    <div class="flex justify-center mb-8">
-                        <div class="pie-chart" style="background: conic-gradient(#3B82F6 0% 70%, #EF4444 70% 100%); shadow: 0 0 20px #3B82F6;">
-                            <div class="absolute inset-0 flex items-center justify-center text-[10px] font-black">70%</div>
-                        </div>
-                    </div>
-                    <div class="space-y-3">
-                        <div class="flex items-center gap-3 text-xs">
-                            <div class="w-3 h-3 bg-accent rounded-full"></div>
-                            <span class="flex-1">経営・戦略（70%）</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-xs">
-                            <div class="w-3 h-3 bg-danger rounded-full"></div>
-                            <span class="flex-1">現場フォロー（30%）</span>
-                        </div>
-                        <div class="flex items-center gap-3 text-xs">
-                            <div class="w-3 h-3 border border-white/20 rounded-full"></div>
-                            <span class="flex-1">事務・採用（0% - 完全委譲）</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Visual Achievement 03: 4-Axis Grid -->
-    <section class="py-24 px-6">
-        <div class="max-w-4xl mx-auto">
-            <div class="flex items-center gap-4 mb-10">
-                <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-dark text-xl font-black">03</div>
-                <h2 class="text-2xl font-black italic">組織自走のための「OS」実装</h2>
-            </div>
-
-            <h3 class="text-center text-lg font-bold mb-12">感覚を数値化する「組織評価4軸」</h3>
-            
+            <!-- Hero Stats (明るくポップに) -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <!-- Skill -->
-                <div class="glass p-6 rounded-2xl text-center border-white/10 hover:border-gold/50 transition-all group">
-                    <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-wrench text-gold text-xl"></i>
-                    </div>
-                    <h4 class="font-bold mb-2">スキル</h4>
-                    <p class="text-[10px] text-slate-500 leading-relaxed">現場での技術力<br>資格取得状況</p>
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-card">
+                    <div class="text-xs text-textSub mb-1 font-bold">採用費削減</div>
+                    <div class="text-3xl font-num font-bold text-primary">780<span class="text-sm text-textMain">万超</span></div>
                 </div>
-                <!-- Attitude -->
-                <div class="glass p-6 rounded-2xl text-center border-white/10 hover:border-gold/50 transition-all group">
-                    <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-heart text-gold text-xl"></i>
-                    </div>
-                    <h4 class="font-bold mb-2">姿勢</h4>
-                    <p class="text-[10px] text-slate-500 leading-relaxed">困難への向き合い方<br>学ぶ意欲・向上心</p>
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-card">
+                    <div class="text-xs text-textSub mb-1 font-bold">コスト効率</div>
+                    <div class="text-3xl font-num font-bold text-primary">1/15<span class="text-sm text-textMain">倍</span></div>
                 </div>
-                <!-- Performance -->
-                <div class="glass p-6 rounded-2xl text-center border-white/10 hover:border-gold/50 transition-all group">
-                    <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-chart-line text-gold text-xl"></i>
-                    </div>
-                    <h4 class="font-bold mb-2">成果</h4>
-                    <p class="text-[10px] text-slate-500 leading-relaxed">工期遵守・粗利益<br>現場の完遂度</p>
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-card">
+                    <div class="text-xs text-textSub mb-1 font-bold">採用単価</div>
+                    <div class="text-3xl font-num font-bold text-primary">9.1<span class="text-sm text-textMain">万円</span></div>
                 </div>
-                <!-- Manner -->
-                <div class="glass p-6 rounded-2xl text-center border-white/10 hover:border-gold/50 transition-all group">
-                    <div class="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-user-shield text-gold text-xl"></i>
-                    </div>
-                    <h4 class="font-bold mb-2">マナー</h4>
-                    <p class="text-[10px] text-slate-500 leading-relaxed">挨拶・清掃・報告<br>道具の管理</p>
+                <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-card">
+                    <div class="text-xs text-textSub mb-1 font-bold">目標達成率</div>
+                    <div class="text-3xl font-num font-bold text-primary">120<span class="text-sm text-textMain">%</span></div>
                 </div>
             </div>
+        </div>
+    </header>
 
-            <div class="mt-12 text-center">
-                <p class="text-sm text-slate-400">
-                    この4軸を賞与や処罰規定と連動させることで、<br>
-                    社長が細かく指示しなくても社員が自ら動く「規律ある組織」へ変貌させます。
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-6 pb-32">
+        
+        <!-- Section 01: Recruitment Detail -->
+        <section id="achievement" class="grid grid-cols-1 md:grid-cols-12 gap-12 pt-16 border-t border-gray-100">
+            <!-- Title Area -->
+            <div class="md:col-span-3">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white font-num font-bold text-sm">01</span>
+                    <h2 class="text-xl font-serif font-bold text-textMain">採用コスト削減</h2>
+                </div>
+                <p class="text-sm text-textSub leading-relaxed">
+                    紹介会社に依存しない<br>自社採用力の強化
                 </p>
             </div>
-        </div>
-    </section>
+            
+            <!-- Content Area -->
+            <div class="md:col-span-9">
+                <h3 class="text-2xl font-serif font-medium mb-8 text-primary">
+                    市場相場の「1/15」を実現。<br>
+                    94%のコストカット実績。
+                </h3>
 
-    <!-- Final CTA -->
-    <section class="py-32 px-6 text-center">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl md:text-5xl font-black mb-8 leading-tight">
-                社長の時間は、<br>
-                <span class="gold-gradient italic">経営</span>のためにある。
-            </h2>
-            <p class="text-slate-400 mb-12 leading-loose">
-                「実働する右腕」を導入することで、コストを最小化しながら、<br>
-                現場から社長を救い出し、事業拡大のスピードを最大化します。
-            </p>
-            <a href="mailto:yamaguchi.t@mnstdiku-member.jp" class="inline-block bg-gold text-dark px-12 py-5 rounded-full font-black text-lg shadow-xl shadow-gold/20 hover:scale-105 transition-transform">
-                まずは30分の無料相談から
-            </a>
-            <p class="mt-8 text-xs text-slate-500 italic">
-                ※実績に基づいた具体的な「採用・組織戦略」をご提案します。
-            </p>
-        </div>
-    </section>
+                <!-- Cost Chart (Bar) -->
+                <div class="bg-white p-8 rounded-2xl shadow-card border border-gray-100 mb-10">
+                    <h4 class="text-sm font-bold text-textSub mb-6 border-l-4 border-secondary pl-3">▼ 6名採用時のコスト比較</h4>
+                    
+                    <div class="space-y-8">
+                        <!-- Market -->
+                        <div>
+                            <div class="flex justify-between mb-2 text-sm">
+                                <span class="font-bold text-textSub">市場相場（紹介会社経由）</span>
+                                <span class="font-bold text-accentRed font-num">840万円</span>
+                            </div>
+                            <div class="w-full bg-gray-100 h-8 rounded-full overflow-hidden">
+                                <div class="w-full h-full bg-gray-300"></div>
+                            </div>
+                            <p class="text-xs text-right text-gray-400 mt-1">@140万円 × 6名</p>
+                        </div>
+                        
+                        <!-- Actual -->
+                        <div>
+                            <div class="flex justify-between mb-2 text-sm">
+                                <span class="font-bold text-primary">当社実績（直接運用）</span>
+                                <span class="font-bold text-primary text-xl font-num">55万円</span>
+                            </div>
+                            <div class="w-full bg-gray-100 h-8 rounded-full overflow-hidden flex items-center relative">
+                                <div class="bg-primary h-full animate-bar rounded-full shadow-lg z-10" style="width: 7%;"></div>
+                                <span class="ml-4 absolute left-[8%] text-xs font-bold text-primary">◀ 785万円削減（94%OFF）</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cost Breakdown Table -->
+                <div class="bg-primaryLight/30 rounded-2xl p-8 mb-10">
+                    <h4 class="text-sm font-bold text-primary mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check"></i> 媒体費用・内訳詳細（2025/2〜2026/2）
+                    </h4>
+                    <div class="overflow-x-auto bg-white rounded-xl shadow-sm border border-gray-100">
+                        <table class="w-full text-sm text-left">
+                            <thead>
+                                <tr class="bg-gray-50 text-textSub border-b border-gray-100">
+                                    <th class="p-4 font-normal">施策・媒体名</th>
+                                    <th class="p-4 font-normal">採用人数</th>
+                                    <th class="p-4 font-normal">費用総額</th>
+                                    <th class="p-4 font-normal text-right">採用単価</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-100">
+                                <tr>
+                                    <td class="p-4 font-bold text-textMain">Zキャリア（スカウト型）</td>
+                                    <td class="p-4">1名</td>
+                                    <td class="p-4 font-num font-bold">550,000円</td>
+                                    <td class="p-4 text-right text-textSub font-num">550,000円</td>
+                                </tr>
+                                <tr class="bg-yellow-50">
+                                    <td class="p-4 font-bold text-primary">Indeed + Engage運用</td>
+                                    <td class="p-4 font-bold text-primary">5名</td>
+                                    <td class="p-4 font-bold text-primary font-num">0円</td>
+                                    <td class="p-4 text-right text-primary font-bold font-num">0円</td>
+                                </tr>
+                                <tr class="bg-gray-50 font-bold">
+                                    <td class="p-4 text-textMain">合計・平均</td>
+                                    <td class="p-4">6名</td>
+                                    <td class="p-4 font-num text-primary">550,000円</td>
+                                    <td class="p-4 text-right font-num text-primary">約9.1万円</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 02: Time & Organization (Donut Chart) -->
+        <section id="organization" class="grid grid-cols-1 md:grid-cols-12 gap-12 pt-16 border-t border-gray-100">
+            <!-- Title Area -->
+            <div class="md:col-span-3">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white font-num font-bold text-sm">02</span>
+                    <h2 class="text-xl font-serif font-bold text-textMain">時間の変革</h2>
+                </div>
+                <p class="text-sm text-textSub leading-relaxed">
+                    社長工数の最適化と<br>組織の自走化
+                </p>
+            </div>
+
+            <!-- Content Area -->
+            <div class="md:col-span-9">
+                <h3 class="text-2xl font-serif font-medium mb-8 text-primary">
+                    社長の「感覚」を数値化し、<br>
+                    経営に集中できる時間を創出。
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- BEFORE: Donut Chart -->
+                    <div class="bg-white p-8 rounded-2xl shadow-card border border-gray-100 text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gray-200"></div>
+                        <h4 class="text-sm font-bold text-textSub mb-6">BEFORE (パンク状態)</h4>
+                        
+                        <!-- Donut Chart BEFORE -->
+                        <!-- Red: 60%, Yellow: 30%, Blue: 10% -->
+                        <div class="donut-chart mb-6" style="--color1: #EF4444; --deg1: 216deg; --color2: #F59E0B; --deg2: 324deg; --color3: #3B82F6;">
+                            <div class="donut-hole">
+                                <span class="text-xs text-textSub font-bold">経営時間</span>
+                                <span class="text-2xl font-bold font-num text-textSub">10%</span>
+                            </div>
+                        </div>
+
+                        <ul class="text-xs text-left space-y-2 inline-block mx-auto">
+                            <li class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-500"></span> 現場実務 (60%)</li>
+                            <li class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-yellow-500"></span> 事務・採用 (30%)</li>
+                            <li class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-blue-500"></span> 経営・戦略 (10%)</li>
+                        </ul>
+                    </div>
+
+                    <!-- AFTER: Donut Chart -->
+                    <div class="bg-white p-8 rounded-2xl shadow-float border border-primary/20 text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+                        <h4 class="text-sm font-bold text-primary mb-6">AFTER (理想の状態)</h4>
+                        
+                        <!-- Donut Chart AFTER -->
+                        <!-- Primary: 70%, Red: 30%, Gray: 0% -->
+                        <div class="donut-chart mb-6" style="--color1: #265C4B; --deg1: 252deg; --color2: #EF4444; --deg2: 360deg; --color3: #E5E7EB;">
+                            <div class="donut-hole">
+                                <span class="text-xs text-primary font-bold">経営時間</span>
+                                <span class="text-3xl font-bold font-num text-primary">70%</span>
+                            </div>
+                        </div>
+
+                        <ul class="text-xs text-left space-y-2 inline-block mx-auto">
+                            <li class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-primary"></span> <span class="font-bold text-primary">経営・戦略 (70%)</span></li>
+                            <li class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-500"></span> 現場フォロー (30%)</li>
+                            <li class="flex items-center gap-2"><span class="w-3 h-3 rounded-full border border-gray-300"></span> 事務・採用 (0% - 完全委譲)</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- 4 Axis Grid -->
+                <div class="mt-12">
+                    <h4 class="text-sm font-bold text-primary mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-sitemap"></i> 組織のOS：4軸評価制度
+                    </h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-primaryLight/30 p-4 rounded-xl text-center border border-primary/10">
+                            <i class="fa-solid fa-wrench text-secondary text-xl mb-2"></i>
+                            <h5 class="font-bold text-primary mb-1">スキル</h5>
+                            <p class="text-xs text-textSub">技術・資格</p>
+                        </div>
+                        <div class="bg-primaryLight/30 p-4 rounded-xl text-center border border-primary/10">
+                            <i class="fa-solid fa-heart text-secondary text-xl mb-2"></i>
+                            <h5 class="font-bold text-primary mb-1">姿勢</h5>
+                            <p class="text-xs text-textSub">向上心・態度</p>
+                        </div>
+                        <div class="bg-primaryLight/30 p-4 rounded-xl text-center border border-primary/10">
+                            <i class="fa-solid fa-chart-line text-secondary text-xl mb-2"></i>
+                            <h5 class="font-bold text-primary mb-1">成果</h5>
+                            <p class="text-xs text-textSub">利益・完遂</p>
+                        </div>
+                        <div class="bg-primaryLight/30 p-4 rounded-xl text-center border border-primary/10">
+                            <i class="fa-solid fa-handshake text-secondary text-xl mb-2"></i>
+                            <h5 class="font-bold text-primary mb-1">マナー</h5>
+                            <p class="text-xs text-textSub">整理・道具愛</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-white/5 text-center text-[10px] text-slate-600 tracking-[0.3em] uppercase">
-        © 2025-2026 Management Promotion Partner.
+    <footer class="bg-primary text-white py-20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-2xl md:text-4xl font-serif mb-8 leading-snug">
+                社長の時間は、<br>
+                <span class="text-secondary border-b-2 border-secondary">経営</span>のためにある。
+            </h2>
+            <p class="text-white/80 mb-12 font-light leading-loose text-sm md:text-base">
+                採用、組織、事務。現場が回らない理由は能力不足ではなく「構造」の欠如です。<br>
+                まずは30分の無料相談で、御社の「ボトルネック」を診断させてください。
+            </p>
+            <a href="mailto:yamaguchi.t@mnstdiku-member.jp" class="inline-flex items-center gap-3 bg-white text-primary px-10 py-4 rounded-full text-base font-bold tracking-widest hover:bg-secondary hover:text-white transition-all duration-300 shadow-float">
+                <i class="fa-regular fa-envelope"></i>
+                無料相談を申し込む
+            </a>
+            <p class="mt-8 text-xs text-white/40">※メールソフトが起動します</p>
+            <p class="mt-20 text-xs text-white/30 tracking-widest">
+                © MANAGEMENT PROMOTION PARTNER.
+            </p>
+        </div>
     </footer>
 
-    <!-- Fixed Bottom Bar for Mobile CTA -->
+    <!-- Mobile Fixed CTA -->
     <div class="fixed bottom-0 w-full z-50 p-4 md:hidden">
-        <a href="mailto:yamaguchi.t@mnstdiku-member.jp" class="flex items-center justify-center gap-3 w-full bg-accent text-white font-black py-4 rounded-2xl shadow-2xl glow">
-            <i class="fa-solid fa-envelope"></i>
+        <a href="mailto:yamaguchi.t@mnstdiku-member.jp" class="flex items-center justify-center gap-2 w-full bg-primary text-white font-bold py-4 rounded-xl shadow-lg border border-white/20">
+            <i class="fa-regular fa-envelope"></i>
             無料相談メールを送る
         </a>
     </div>
