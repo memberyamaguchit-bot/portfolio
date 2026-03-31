@@ -77,30 +77,19 @@
 
   /* ── HERO ── */
   .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
+    display: flex;
+    flex-direction: column;
     padding-top: 72px;
-    overflow: hidden;
   }
-  .hero-bg-right {
-    position: absolute; right: 0; top: 0; bottom: 0; width: 50%;
-    background: var(--ink);
-    z-index: 0;
-  }
-  .hero-grain {
-    position: absolute; inset: 0; z-index: 1;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    opacity: 0.5;
-  }
+  .hero-bg-right { display: none; }
+  .hero-grain { display: none; }
 
   .hero-left {
     position: relative; z-index: 2;
     display: flex; flex-direction: column; justify-content: center;
-    padding: 80px 64px 80px 80px;
+    padding: 100px 10% 100px;
     background: var(--cream-light);
+    min-height: calc(100vh - 72px);
   }
   .hero-eyebrow {
     font-family: 'DM Sans', sans-serif;
@@ -192,11 +181,11 @@
     position: relative; z-index: 2;
     background: var(--ink);
     display: flex; align-items: center; justify-content: center;
-    padding: 80px 64px;
+    padding: 80px 10%;
   }
   .hero-stats {
     width: 100%;
-    max-width: 380px;
+    max-width: 860px;
     opacity: 0; animation: fadeIn 1s 1s ease forwards;
   }
   .stat-title {
@@ -206,26 +195,33 @@
     color: rgba(255,255,255,0.3);
     margin-bottom: 40px;
   }
-  .stat-block {
-    padding: 32px 0;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    display: flex; align-items: flex-start; gap: 20px;
+  .stat-blocks-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
   }
+  .stat-block {
+    padding: 32px 32px 32px 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-right: 1px solid rgba(255,255,255,0.06);
+    display: flex; flex-direction: column; gap: 12px;
+    padding-right: 32px;
+  }
+  .stat-block:last-child { border-right: none; padding-right: 0; }
+  .stat-block:first-child { padding-left: 0; }
   .stat-num {
     font-family: 'DM Sans', sans-serif;
-    font-size: 42px; font-weight: 300;
+    font-size: 52px; font-weight: 300;
     color: var(--gold-light);
     line-height: 1;
-    min-width: 90px;
     letter-spacing: -0.02em;
   }
-  .stat-num sup { font-size: 20px; vertical-align: top; margin-top: 6px; }
+  .stat-num sup { font-size: 22px; vertical-align: top; margin-top: 8px; }
   .stat-label {
     font-family: 'Noto Serif JP', serif;
     font-size: 13px;
     color: rgba(255,255,255,0.55);
     line-height: 1.8;
-    padding-top: 6px;
   }
   .stat-label strong { display: block; color: rgba(255,255,255,0.9); font-weight: 600; font-size: 15px; margin-bottom: 4px; }
   .hero-scroll {
@@ -762,10 +758,11 @@
   @media (max-width: 1100px) {
     :root { --section-gap: 100px; }
     nav { padding: 0 32px; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-bg-right { display: none; }
-    .hero-left { padding: 60px 32px; }
-    .hero-right { background: var(--ink); padding: 60px 32px; }
+    .hero-left { padding: 60px 32px; min-height: auto; }
+    .hero-right { padding: 60px 32px; }
+    .stat-blocks-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-block:nth-child(2) { border-right: none; }
+    .stat-block:nth-child(3), .stat-block:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.08); }
     .problem { padding: var(--section-gap) 32px; grid-template-columns: 1fr; gap: 40px; }
     .who-inner { grid-template-columns: 1fr; }
     .who-image { max-height: 400px; }
@@ -793,7 +790,8 @@
   @media (max-width: 640px) {
     :root { --section-gap: 80px; }
     .hero-h1 { font-size: 32px; }
-    .stat-num { font-size: 32px; min-width: 70px; }
+    .stat-blocks-grid { grid-template-columns: 1fr; }
+    .stat-block { border-right: none; }
     .flow-steps { grid-template-columns: 1fr; }
   }
 </style>
@@ -809,7 +807,7 @@
     <li><a href="#cases">支援実績</a></li>
     <li><a href="#contact">無料相談</a></li>
   </ul>
-  <a class="nav-cta" href="mailto:yamaguchi.t@mnstdiku-member.jp?subject=【無料相談】ホームページからのお問い合わせ">無料相談はこちら</a>
+  <a class="nav-cta" href="/cdn-cgi/l/email-protection#58213935393f2d3b3031762c1835362b2c3c31332d75353d353a3d2a763228672b2d3a323d3b2c65bbd8c8bfdcf9becec1bfc3e0b0f3dfbbd8c9bbdbc3bbdbe4bbdbf8bbdbc2bbdbe4bbdae0bbd9d3bbdad1bbd9f6bbd9d2bdcdd7bbd9dcbdc8d0bbdad7bbd9c3">無料相談はこちら</a>
 </nav>
 
 <!-- HERO -->
@@ -835,7 +833,7 @@
       <div class="pill">広報・クリエイティブ</div>
     </div>
     <div class="hero-cta-group">
-      <a href="mailto:yamaguchi.t@mnstdiku-member.jp?subject=【無料相談】ホームページからのお問い合わせ" class="btn-primary">まず相談してみる（無料）</a>
+      <a href="/cdn-cgi/l/email-protection#c1b8a0aca0a6b4a2a9a8efb581acafb2b5a5a8aab4ecaca4aca3a4b3efabb1feb2b4a3aba4a2b5fc224151264560275758265a79296a4622415022425a22427d22426122425b22427d22437922404a22434822406f22404b24544e22404524514922434e22405a" class="btn-primary">まず相談してみる（無料）</a>
       <a href="#about" class="btn-secondary">代表について知る →</a>
     </div>
   </div>
@@ -843,6 +841,7 @@
   <div class="hero-right">
     <div class="hero-stats">
       <div class="stat-title">TRACK RECORD</div>
+      <div class="stat-blocks-grid">
       <div class="stat-block">
         <div class="stat-num">50<sup>%</sup></div>
         <div class="stat-label">
@@ -870,6 +869,7 @@
           <strong>小規模チームに特化</strong>
           スタートアップ・中小企業の成長フェーズに完全特化した支援。
         </div>
+      </div>
       </div>
     </div>
     <div class="hero-scroll">
@@ -1165,7 +1165,7 @@
   <div class="footer-bottom">© 2024 面接代行会社MEMBER. All rights reserved.</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -1191,16 +1191,4 @@
       '【会社名】' + company + '\n' +
       '【お名前】' + name + '\n' +
       '【メールアドレス】' + email + '\n' +
-      '【従業員数】' + employees + '\n' +
-      '【最もお困りのこと】' + concern + '\n' +
-      '【ご相談内容】\n' + message
-    );
-    
-    window.location.href = 'mailto:yamaguchi.t@mnstdiku-member.jp?subject=' + subject + '&body=' + body;
-    
-    document.getElementById('successMsg').style.display = 'block';
-  });
-</script>
-
-</body>
-</html>
+      '【�
